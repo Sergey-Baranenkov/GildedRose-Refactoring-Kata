@@ -1,5 +1,7 @@
-import Item from './Item';
+import Item, {SpecialItemNamesEnum} from './Item';
 import Coordinator from "./Coordinator";
+
+
 
 export class GildedRose {
     items: Array<Item>;
@@ -11,16 +13,16 @@ export class GildedRose {
     updateQuality(): Array<Item> {
         this.items = this.items.map((item) => {
             switch (item.name) {
-                case 'Aged Brie':
+                case SpecialItemNamesEnum.agedBrie:
                     return Coordinator.updateQualityForAgedBrie(item);
 
-                case 'Backstage passes to a TAFKAL80ETC concert':
+                case SpecialItemNamesEnum.backstagePasses:
                     return Coordinator.updateQualityForBackstagePasses(item);
 
-                case 'Sulfuras, Hand of Ragnaros':
+                case SpecialItemNamesEnum.sulfuras:
                     return Coordinator.updateQualityForSulfuras(item);
 
-                case 'Conjured':
+                case SpecialItemNamesEnum.conjured:
                     return Coordinator.updateQualityForConjured(item);
 
                 default:

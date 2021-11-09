@@ -7,29 +7,29 @@ class Transformer {
         this.item = item;
     }
 
-    public handleQualityBoundaries(minQuality: number = 0, maxQuality: number = 50) {
+    public handleQualityBoundaries(minQuality: number = 0, maxQuality: number = 50): this {
         let quality = this.item.quality;
         quality = Math.min(Math.max(minQuality, quality), maxQuality);
         this.item.quality = quality;
         return this;
     }
 
-    public decreaseQualityBy(by: number = 1) {
+    public decreaseQualityBy(by: number = 1): this {
         this.item.quality -= by;
         return this
     }
 
-    public increaseQualityBy(by: number = 1) {
+    public increaseQualityBy(by: number = 1): this {
         this.item.quality += by;
         return this
     }
 
-    public decreaseSellIn() {
+    public decreaseSellIn(): this {
         this.item.sellIn--;
         return this;
     }
 
-    public decreaseQualityBySellIn() {
+    public decreaseQualityBySellIn(): this {
         this.decreaseQualityBy(this.item.sellIn > 0 ? 1 : 2);
         return this;
     }
@@ -37,7 +37,7 @@ class Transformer {
 }
 
 export default class Coordinator {
-    private static createTransformer(item: Item) {
+    private static createTransformer(item: Item): Transformer {
         return new Transformer(item)
     }
 

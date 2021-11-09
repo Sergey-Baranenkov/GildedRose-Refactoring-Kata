@@ -24,8 +24,8 @@ class Transformer {
         return this
     }
 
-    public decreaseSellIn(): this {
-        this.item.sellIn--;
+    public decreaseSellInBy(by: number = 1): this {
+        this.item.sellIn -= by;
         return this;
     }
 
@@ -46,7 +46,7 @@ export default class Coordinator {
             .createTransformer(item)
             .decreaseQualityBySellIn()
             .handleQualityBoundaries()
-            .decreaseSellIn()
+            .decreaseSellInBy(1)
             .item;
     }
 
@@ -55,7 +55,7 @@ export default class Coordinator {
             .createTransformer(item)
             .increaseQualityBy(1)
             .handleQualityBoundaries()
-            .decreaseSellIn()
+            .decreaseSellInBy(1)
             .item;
     }
 
@@ -75,7 +75,7 @@ export default class Coordinator {
 
         return transformer
             .handleQualityBoundaries()
-            .decreaseSellIn()
+            .decreaseSellInBy(1)
             .item;
     }
 
@@ -89,7 +89,7 @@ export default class Coordinator {
             .decreaseQualityBySellIn()
             .decreaseQualityBySellIn()
             .handleQualityBoundaries()
-            .decreaseSellIn()
+            .decreaseSellInBy(1)
             .item;
     }
 }
